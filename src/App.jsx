@@ -4,8 +4,8 @@ import './App.css'
 function NameList() {
   const [list, setList] = useState(["Brenno", "Cleyton", "Jonata"])
   
-  const [name, setName] = useState("")
-  
+  const [name, setName] = useState(() => "")
+
   const onAddName = () => {
     setList([...list, name])
     setName("")
@@ -15,12 +15,7 @@ function NameList() {
     <div>
       <h2>List</h2>
 
-      <ul>
-          {list.map((name) => (
-            <li key={name}>{name}</li>
-          ))}
-      </ul>
-
+      <div>
       <input 
         type="text" 
         value={name}
@@ -29,6 +24,15 @@ function NameList() {
         <button onClick={onAddName}>
           Add Name
         </button>
+      </div>
+
+      <div>
+        <ul>
+            {list.map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+        </ul>
+      </div>
     </div>
   )
 }
@@ -51,7 +55,7 @@ function Counter() {
 function App() {
   
   return (
-    <div className="App">
+    <div>
       <Counter/>
       <NameList/>
     </div>
